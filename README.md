@@ -1,6 +1,6 @@
-# Weapon System v1.0.0 for Unreal Engine 5.3.2
+# Weapon System v1.0.1 for Unreal Engine 5.3.2
 
-This is the first version of my **Weapon System** for **Counter Strike 2** ported in Unreal Engine, but it can be used for any other project you are working on. I plan to improve it in the future, so if you're interested, stay tuned for updates!
+This is the v1.0.1 version of my **Weapon System** for **Counter Strike 2** ported in Unreal Engine, but it can be used for any other project you are working on. I plan to improve it in the future, so if you're interested, stay tuned for updates
 
 ---
 
@@ -14,11 +14,7 @@ This is the first version of my **Weapon System** for **Counter Strike 2** porte
 - Go to `Content\VFX\Weapon_system\Weapon_System_BPS` and drag any BP instance to your scene.
 - You can also create your own by selecting the master BP and creating a new BP class.
 - Open the BP instance and customize the settings as needed.
-
-  **Bullet Settings**:
-  - Go to the `Bullet` folder, create an instance of the bullet master class, and modify settings as needed.
-  - Select your created bullet instance in the "Bullet Type" field of your weapon system instance.
-
+- 
 ### Step 3: Integrating the Weapon System
 - **For Sequencer**:
   - Drag the WS (Weapon System) blueprint into your Sequence and add a Trigger event.

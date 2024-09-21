@@ -42,8 +42,9 @@ This is the first version of my **Weapon System** for **Counter Strike 2** porte
   **To Add Impacts**:
   1. Go to the **Physics** tab of the object your bullet may collide with.
   2. Add a physical material from `Content\Materials\Physical_Materials`.
-  3. There are currently 6 surfaces with impacts, but more will be added in future updates.
-  4. Select the physical material, and your impacts should work properly.
+  3. Select the physical material, and your impacts should work properly.
+
+  There are currently 6 surfaces with impacts, but more will be added in future updates.
 
 ---
 

@@ -10,7 +10,7 @@ This is my Weapon System for **Counter Strike 2**, but it can be used for any ot
    - *(Alternatively, you can copy my `DefaultEngine.ini` file, but this is not recommended as you will lose your project settings.)*
 
 2. **Content Import:**
-   - Copy everything inside the `Content` folder exactly into your Unreal Engine project's `Content` folder. This is essential for proper functionality.
+   - Go to releases download Weapon_system.zip. Copy everything inside the `Content` folder exactly into your Unreal Engine project's `Content` folder. This is essential for proper functionality.
 
 3. **Add to Scene:**
    - Go to `Content\VFX\Weapon_system\Weapon_System_BPS` and drag any of the BP instances or the master BP into your scene. Select the weapon you want to use.

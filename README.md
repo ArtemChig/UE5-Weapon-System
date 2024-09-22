@@ -1,4 +1,4 @@
-# Weapon System v1.0.3 for Unreal Engine 5.3.2
+# Weapon System v1.0.2 for Unreal Engine 5.3.2
 
 This is my Weapon System for **Counter Strike 2**, but it can be used for any other project you are working on. I am planning to improve it in the future, so if you're interested, stay tuned for updates.
 

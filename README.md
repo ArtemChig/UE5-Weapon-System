@@ -74,6 +74,10 @@ To enable blood splashes upon hitting an enemy target:
 1. Check the project settings to ensure the physical surfaces are loaded correctly.
 2. If the `NoParticleCollision` preset is missing, repeat **Step 1** of the setup.
 
+### Bullet is not flying
+
+1. Check message log after simulation, you should see "Trying to simulate physics on ".../BP_Bullet_Master_C...Bullet"
+2. Go to the WS master bp, find Bullet object, go to the Sphere mesh, find collision complexity and change it to Simple and Complex
 ---
 
 Stay tuned for future updates!

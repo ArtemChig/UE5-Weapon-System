@@ -1,6 +1,6 @@
 # Weapon System v1.0.3 for Unreal Engine 5.3.2
 
-This is a Weapon System for **Counter Strike 2** ported in Unreal Engine 5, but it can be used for any other project you're working on. I am planning to improve it in the future, so if you're interested, stay tuned for updates.
+This is a Weapon System for **Counter Strike 2** ported in Unreal Engine 5, but it can be used for any other project you're working on. that includes working projectile, muzzle flash, bullet hole decals, impact particles, Blood splashes with decals on enemy hit, and many more. I am planning to improve it in the future, so if you're interested, stay tuned for updates.
 
 ## How to Use
 

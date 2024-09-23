@@ -1,83 +1,75 @@
-# Weapon System v1.0.2 for Unreal Engine 5.3.2
+# Weapon System v1.0.3 for Unreal Engine 5.3.2
 
-This is my Weapon System for **Counter Strike 2**, but it can be used for any other project you are working on. I am planning to improve it in the future, so if you're interested, stay tuned for updates.
+This is a Weapon System for **Counter Strike 2** ported in Unreal Engine 5, but it can be used for any other project you're working on. I am planning to improve it in the future, so if you're interested, stay tuned for updates.
 
 ## How to Use
 
-1. **Engine Configuration:**
-   - Open the `Engine Config/` folder and find the `!DefaultEngine_additional_commands.txt` file, copy all the text inside.
-   - Go to the `PATH_TO_YOUR_PROJECT\Config` folder and find the `DefaultEngine.ini` file. Paste the text you copied at the very end.
-   - *(Alternatively, you can copy my `DefaultEngine.ini` file, but this is not recommended as you will lose your project settings.)*
+### Step 1: Engine Config Setup
+1. Open the `Engine Config/` folder and find `!DefaultEngine_additional_commands.txt`. 
+2. Copy all the text inside the file. 
+3. Go to the `PATH_TO_YOUR_PROJECT/Config` folder and find the `DefaultEngine.ini` file.
+4. Paste the copied text at the very end of the `DefaultEngine.ini` file.
+   - Alternatively, you can copy my `DefaultEngine.ini` file, but it's not recommended since you will lose your project settings.
 
-2. **Content Import:**
-   - Go to releases download Weapon_system.zip. Copy everything inside the `Content` folder exactly into your Unreal Engine project's `Content` folder. This is essential for proper functionality.
+### Step 2: Content Folder Setup
+1. Copy everything inside the `Content` folder to your Unreal Engine project `Content` folder. 
+   - Note: The system will not work unless the files are in the correct folder.
 
-3. **Add to Scene:**
-   - Go to `Content\VFX\Weapon_system\Weapon_System_BPS` and drag any of the BP instances or the master BP into your scene. Select the weapon you want to use.
+### Step 3: Weapon Setup
+1. Go to `Content\VFX\Weapon_system\Weapon_System_BPS` and drag any of the BP instances or the master BP into your scene.
+2. Select the weapon and camera for POV, and just the weapon for Enemy WS.
 
-4. **Using the Weapon System:**
-   - **Sequencer:**  
-     Drag the Weapon System (WS) blueprint to your sequence and add a Trigger event. Double-click the created keyframe, and add the "Shoot" function, connecting the event node to the function. For the target, select the target from the event, and compile the script.
-   - **Game:**  
-     While the blueprint is primarily designed for cinematics, you can call the `Shoot` function in your control blueprint. Additionally, in the Weapon System master BP, change the `Muzzle Bones` array value to match your muzzle bone name.
+### Step 4: Using the Weapon System
 
-After following these steps, your setup should be ready to use.
+#### Sequencer:
+1. Drag the WS (weapon system) blueprint to your sequence and add a trigger event.
+2. Double-click the created keyframe, and add the `Shoot` function. Connect the event node to the function, and for the target, select the target from the event.
+3. Compile the script.
 
----
+#### Game:
+- This blueprint was originally made for cinematics, but if you want to use it in-game, call the `Shoot` function in your control blueprint.
+- In the weapon system master BP, change the muzzle bones array value to match your muzzle bone name.
 
-## Decals/Impacts
+After these steps, your weapon system should be ready.
 
-- **Sequencer Mode:**  
-  The WS needs to be in simulation mode inside the sequencer to work properly.
-  
-- **Bullet Hole Decals:**  
-  Bullet hole decals will automatically work in simulation mode, but impacts require manual setup. To add impacts for bullet collisions:
-  - Go to the physics tab of the object your bullet may collide with.
-  - Add a physical material from `Content\Materials\Physical_Materials`. 
-  - Currently, only six surfaces with impacts are available, but more will be added in future updates.
-  
-Once the physical material is selected, your impacts should work correctly.
+## Decals and Impacts
 
----
+- For the WS to work inside the sequencer, you need to enter simulation mode.
+- Bullet hole decals work automatically in simulation mode, but impacts won't. To enable impacts on bullet collision:
+  1. Go to the physics tab of the object the bullet may collide with.
+  2. Add a physical material from `Content\Materials\Physical_Materials`.
+  - Currently, only 6 surfaces have impacts, but more will be added in future updates.
 
-## Blood Splatters/Enemy Hit
+## Blood Splatters and Enemy Hits
 
-To enable blood splashes upon hitting an enemy target:
+- For blood splashes when bullets hit enemies:
+  1. Select the enemy's skeletal mesh in the content browser, right-click -> Create -> Physics Asset -> Create and assign.
+  2. Adjust the physics body parts to cover the model.
+  3. Select all parts (`Ctrl + A`), go to the "Collision" tab, and set the "Phys Material Override" to `PM_Flesh`.
+  4. Go to the skeletal mesh actor and set the Physics Asset Override to the asset you just created. 
+  5. In the "Collision" tab, change the preset to `NoParticleCollision`.
 
-1. Select the enemy's skeletal mesh in the content browser.
-2. Right-click (RMB) -> Create -> Physics Asset -> Create and assign.
-3. Transform the physics body parts to cover the model.
-4. Select all parts using `ctrl-a`, go to the "Collision" tab, and find "Phys Material Override". Select `PM_Flesh`.
-5. In the skeletal mesh actor, change the "Physics Asset Override" to the asset you created.
-6. In the "Collision Presets", set it to `NoParticleCollision`.
+## Common Issues and Solutions
 
----
+### Bullet Not Colliding
+1. Filter and select all static meshes in the content browser, right-click -> Asset actions -> Edit selection in Property Matrix.
+2. In the "Pinned columns" tab, go to `StaticMesh -> Body Setup` and set "Collision Complexity" to `Use Complex Collision as Simple`.
+3. Go to project settings, search for "complex", and set both "Default Shape Complexity" and "Collision Mode" to `Use Complex Collision as Simple`.
 
-## Common Problems
+### Textures for Particles/Decals Not Loading
+1. You may have imported the content folder incorrectly. Delete everything and repeat **Step 2**.
 
-### Bullet is Not Colliding
+### Issue with Physical Surfaces / No `NoParticleCollision` Preset
+1. Check if your physical surfaces loaded correctly in project settings.
+2. If `NoParticleCollision` isn't available, repeat **Step 1**.
 
-1. **Static Mesh Collision:**
-   - Filter all static meshes in the content browser, right-click (RMB) -> Asset Actions -> Edit Selection in Property Matrix. This may take a while.
-   - In "Pinned Columns", go to the "StaticMesh" tab, open "Body Setup", and set "Collision Complexity" to `Use Complex Collision as Simple`.
+### Bullet Not Flying
+1. Check the message log after simulation for "Trying to simulate physics on .../BP_Bullet_Master_C...Bullet".
+2. Go to the WS master BP, find the Bullet object, then the Sphere mesh, and change the collision complexity to `Simple and Complex`.
 
-2. **Project Settings:**
-   - Go to project settings and type "complex" in the search bar.
-   - Set both "Default Shape Complexity" and "Collision Mode" to `Use Complex Collision as Simple`.
+## Planned Features
+- More surfaces with impacts
+- Additional features for game integration
 
-### Textures for Particles/Decals Did Not Load
-
-1. You may have imported the content folder incorrectly. Delete the files and repeat **Step 2**.
-
-### Issue with Physical Surfaces / NoParticleCollision Preset Not Showing
-
-1. Check the project settings to ensure the physical surfaces are loaded correctly.
-2. If the `NoParticleCollision` preset is missing, repeat **Step 1** of the setup.
-
-### Bullet is not flying
-
-1. Check message log after simulation, you should see "Trying to simulate physics on ".../BP_Bullet_Master_C...Bullet"
-2. Go to the WS master bp, find Bullet object, go to the Sphere mesh, find collision complexity and change it to Simple and Complex
----
-
-Stay tuned for future updates!
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.

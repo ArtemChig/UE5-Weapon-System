@@ -59,7 +59,7 @@ After these steps, your weapon system should be ready.
 ### Textures for Particles/Decals Not Loading
 1. You may have imported the content folder incorrectly. Delete everything and repeat **Step 2**.
 
-### Issue with Physical Surfaces / No `NoParticleCollision` Preset
+### Issue with Physical Surfaces / `NoParticleCollision` Preset
 1. Check if your physical surfaces loaded correctly in project settings.
 2. If `NoParticleCollision` isn't available, repeat **Step 1**.
 
